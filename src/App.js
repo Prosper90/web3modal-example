@@ -1,84 +1,51 @@
+import React, { Component } from "react";
 import './App.css';
-import Web3 from "web3";
-import Web3Modal from "web3modal";
-import WalletConnectProvider from "@walletconnect/web3-provider";
-import Torus from "@toruslabs/torus-embed";
-import Fortmatic from "fortmatic";
-import Portis from "@portis/web3";
+import Navbar from "./components/Navbar";
+import Marketside from "./components/Marketside";
+import Markettype from "./components/Markettype";
 
 
-function App() {
 
 
-  async function btnCall() {
 
-    const providerOptions = {
-      walletconnect: {
-        package: WalletConnectProvider, // required
-        options: {
-          infuraId: "INFURA_ID" // required
-        }
-      },
 
-     fortmatic: {
-   package: Fortmatic, // required
-   options: {
-     key: "FORTMATIC_KEY" // required
-       }
-     },
+class App extends Component {
 
-     portis: {
-    package: Portis, // required
-    options: {
-      id: "PORTIS_ID" // required
+
+  constructor(){
+      super()
+      this.state = {
+        toggle : false,
+      }
     }
-   },
-
-   torus: {
-  package: Torus, // required
-  options: {
-    networkParams: {
-      host: "https://localhost:8545", // optional
-      chainId: 1337, // optional
-      networkId: 1337 // optional
-    },
-    config: {
-      buildEnv: "development" // optional
-    }
-  }
-}
 
 
-    };
-
-    const web3Modal = new Web3Modal({
-      network: "mainnet", // optional
-      cacheProvider: true, // optional
-      providerOptions // required
-    });
-
-
-    const provider = await web3Modal.connect();
-
-
-    const web3 = new Web3(provider);
-
-  };
+    togglebtn = () => {
+     this.setState({ toggle : !this.state.toggle});
+   }
 
 
 
+
+render(){
 
 
   return (
     <div className="App">
+     <Navbar />
 
-    <div className="App-header">
-     <h3 className="text"> Test Web3Modal </h3>
-     <button className="button" onClick={btnCall}> Connect </button>
-    </div>
+     <div className={ this.state.toggle ? "hold-contain" : "hold-contain-nactive"} >
+
+     <Markettype toggle={this.togglebtn} empty={this.state.toggle} />
+     <Marketside gridchange={this.state.toggle}/>
+
+     </div>
+
 
     </div>
   );
+}
+
 }
 
 export default App;

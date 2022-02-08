@@ -1,46 +1,279 @@
+body{
+  background-color: #15101b;
+  overflow: hidden;
+}
+
+
 .App {
-  text-align: center;
+  background-color: #15101b;
 }
 
 
-@media (prefers-reduced-motion: no-preference) {
 
-}
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  background-color: #15101b;
+  border-bottom: 1px solid #3b3741;
   font-size: calc(10px + 2vmin);
   color: white;
+  display: flex;
+  justify-content: space-between;
+  padding-left: 30px;
+  padding-right: 0;
+
+}
+
+.cont{
+  width: 520px;
+  padding: 10px;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .text{
   color: #fff;
   font-size: 24px;
-  
 }
 
-.button{
-  background-color: #D6AA9F;
-  width: 170px;
-  height: 50px;
-  color: #000;
-  border-radius: 25px;
+.icons-text{
+  color: #fff;
+  padding: 10px;
+  font-size: 34px;
+}
+
+
+
+.button-connect{
+  display: inline-block;
+  cursor: pointer;
+  width: 100px;
+  height: 40px;
+  border-radius: 28px;
+  border: 1px solid #3b3741;
+  box-sizing: border-box;
+  background: linear-gradient(1turn,#151416 4.44%,#1d1d1d);
+  color: #fff;
 }
 
 .App-link {
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.hold-contain{
+  display: grid;
+  grid-template-columns: 22% 78%;
+
+}
+
+.hold-contain-nactive {
+  display: grid;
+  grid-template-columns: 7% 93%;
+
+}
+
+
+.App-side-Right{
+  width: 100%;
+  border-left: 1px solid #3b3741;
+  color: #fff;
+  padding-left: 0;
+  padding-top: 20px;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  height: 91vh;
+}
+
+.App-side-Left {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.nav-left{
+  border-bottom: 1px solid #3b3741;
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.nav-contain-nactive {
+  display: none;
+}
+
+.links {
+  text-decoration: none;
+  color: #fff;
+  font-size: 14px;
+}
+
+.launching_tokens {
+  padding: 45px;
+}
+
+
+#created-html {
+    padding: 5px;
+    border: 1px solid #3b3741;
+    display: flex;
+    justify-content: space-between;
+}
+
+#inside-div {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+#inside-inside-div {
+    width: 15%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.avatars {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.avatars .avatar {
+    width: 4.5rem;
+    height: 4.5rem;
+    -webkit-box-shadow: 0px 17px 13px 0px #192c4b05;
+    box-shadow: 0px 17px 13px 0px #192c4b05;
+    border-radius: 50% !important;
+    border: 3px solid #fff;
+    -o-object-fit: cover;
+    object-fit: cover;
+    -webkit-transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.avatars .avatars_name {
+  font-weight: 300;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.avatars .avatar.avatar-sm {
+  width: 2rem;
+  height: 2rem;
+}
+
+.txt_sm {
+  font-size: 12px;
+}
+
+.card .card-body{
+  background-color: #100C14;
+  border: none;
+}
+
+.button {
+  background-color: #E37400;
+  border: none;
+  color: #000;
+  padding: 10px 30px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.button:hover {
+  background-color: #BE6507;
+}
+
+
+.pagin{
+  margin-top: 15px;
+  width: 100%;
+}
+
+.pagination {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.pagination > li > a {
+  background-color: #15101b;
+  color: #BE6507;
+}
+
+
+.pagination > li > a:hover {
+  background-color: #15101b;
+  color: #A85A09;
+}
+
+
+
+.listed-tokens {
+  margin-top: 50px;
+  padding: 30px;
+  background-color: #100C14;
+  border-radius: 10px;
+}
+
+.listed-tokens .listed-tokens-hold {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: 40vh;
+  overflow-y: scroll;
+}
+
+.listed-tokens a {
+  text-decoration: none;
+}
+
+.footer {
+  padding: 0;
+  margin-left: 0;
+  margin-right: 0;
+  width: 100%;
+  height: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #3b3741;
+  margin-top: 20px;
+  box-sizing:border-box;
+}
+
+
+
+@media(max-width:767px) {
+
+
+
+}
+
+
+
+
+
+
+
+
+
+@media(max-width:767px) {
+
+  .launching_tokens {
+    width: 100%;
+    padding: 75px;
   }
-  to {
-    transform: rotate(360deg);
+
+
+  .button-create{
+    display: none;
   }
+
+  .button-auction{
+    display: none;
+  }
+
 }
