@@ -26,7 +26,23 @@ class Markettype extends Component {
       </div>
 
        <div className={ this.props.empty ? "nav-contain" : "nav-contain-nactive"}>
-        <h2> Hello Left </h2>
+
+        <div className="choosechain">
+         <span>ETHEREUM</span>
+         <span>BINANCE</span>
+        </div>
+
+
+        <div className="list">
+         <ul className="list-ul">
+         <li>LaunchPads</li>
+         <li>Airdrops</li>
+         <li>KYC</li>
+         <li>Claim Tokens</li>
+         <li>Personal Stats</li>
+         </ul>
+        </div>
+
       </div>
 
       </div>

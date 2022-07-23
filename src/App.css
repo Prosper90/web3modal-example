@@ -230,6 +230,23 @@ body{
   text-decoration: none;
 }
 
+
+.choosechain {
+  border: 1px solid #3b3741;
+  display: flex;
+  justify-content: space-around;
+  color: #fff;
+}
+
+.choosechain span{
+}
+
+.list {
+  padding-top: 30px;
+  color: #fff;
+   list-style-type: none;
+}
+
 .footer {
   padding: 0;
   margin-left: 0;
@@ -246,7 +263,7 @@ body{
 
 
 
-@media(max-width:767px) {
+@media (max-width:767px) {
 
 
 
