@@ -1,135 +1,82 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import '../App.css';
 import Listedtokens from "./Listedtokens";
+import Ourlisted from "./Ourlisted";
 import Footer from "./Footer";
+import Moreinfo from "./Moreinfo";
+import Ama from "./Ama";
 
 //import axios from "axios";
 
 
-class Marketside extends Component {
-
-/*
-  constructor(){
-      super()
-      this.state = {
-        nfts: []
-      }
-    }
+export default function Marketside(props) {
 
 
-  componentDidMount(){
-  axios.get("https://api.opensea.io/api/v1/assets?order_direction=desc&offset=0&limit=20")
-  .then(  (res) => {
-    this.setState({ nfts: res.data.assets });
-    console.log(res.data)
-    console.log(this.state)
-  });
-
-  console.log(this.state)
-}
-
-*/
+    const [getMore, setGetmore] = useState(false);
 
 
 
-  render(){
+  useState(() => {
 
-    return(
+    console.log(props.ama);
 
-      <div className="container-fluid App-side-Right">
-
-
-
-      <h1> Getting Started </h1>
-       <p className="ml-2">Discover, collect and trade digital assets, hold current <br />
-       token, stake and win bigger as we guide you.</p>
-
-       <div className="">
-         <button className=" button m-2">Observe</button>
-         <button className="button ">Get Info</button>
-       </div>
-
-
-       <h1 className="text-center"> Token Sale Launchpad </h1>
+  }, [props.ama]);
 
 
 
-       <div className=" row g-3 launching_tokens" >
 
+  return(
 
-        { /*first column */}
-         <div className={ this.props.gridchange ? "col-12 col-sm-12 col-md-6 col-xs-12" : "col-12 col-sm-6 col-md-4 "}>
-          {/*cardstart*/}
-         <div className="card border-0">
+  <div className="App-side-Right">
 
-         <div className="card-body">
-         <h5 className="card-title">Card title</h5>
-         <h6 className="card-subtitle mb-2 text-muted">Card subtitle</h6>
-         <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-         <a href="#link" class="card-link">Card link</a>
-         <a href="#dummy" class="card-link">Another link</a>
-         </div>
-         </div>
-         {/* end of card */}
-         </div>
-         {/* end of first column */}
+    { !getMore && !props.ama ?
+    <>  
+        <div className="header-welcome">
 
-         {/* second column */}
-         <div className={ this.props.gridchange ? "col-12 col-sm-12 col-md-6 col-xs-12" : "col-12 col-sm-6 col-md-4 "}>
-          {/* cardstart */}
-         <div className="card border-0">
+            <h1> Crypto Tokens LaunchPad </h1>
+            <p className="ml-2">Discover new Investmensts</p>
 
-         <div className="card-body">
-         <h5 className="card-title">Card title</h5>
-         <h6 className="card-subtitle mb-2 text-muted">Card subtitle</h6>
-         <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-         <a href="#link" class="card-link">Card link</a>
-         <a href="#dummy" class="card-link">Another link</a>
-         </div>
-         </div>
-         {/* end of card */}
-         </div>
-         {/* end of second column */}
+            <div className="">
+              <button className=" button m-2">Observe</button>
+              <button className="button ">Get Info</button>
+            </div>
 
-
-         {/* third column */}
-         <div className={ this.props.gridchange ? "col-12 col-sm-12 col-md-6 offset-md-3" : " col-12 col-sm-6 col-md-4 "}>
-          {/* cardstart */}
-         <div className="card border-0">
-
-         <div className="card-body">
-         <h5 className="card-title">Card title</h5>
-         <h6 className="card-subtitle mb-2 text-muted">Card subtitle</h6>
-         <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-         <a href="#link" class="card-link">Card link</a>
-         <a href="#dummy" class="card-link">Another link</a>
-         </div>
-         </div>
-         {/* end of card */}
-         </div>
-         {/* end of third column */}
-
-
-
-       </div>
-        {/* end of row */}
-
-        <div className="d-flex justify-content-center">
-         <button className="button">More</button>
         </div>
 
 
-        <Listedtokens />
+        <h1 className="text-center token-sale"> Token Sale Launchpad </h1>
+    
+
+          <Ourlisted  setGetmore={setGetmore} />
+
+          <Listedtokens setGetmore={setGetmore} />
+
+
+      </>
+
+       : getMore && !props.ama ?
+
+        <Moreinfo setGetmore={setGetmore} getMore={getMore} />
+
+       : !getMore && props.ama ?
+         
+         <Ama ama={props.ama} setAma={props.setAma} />
+
+         :
+
+         <div></div>
+       
+      }
+     
 
         <Footer />
-
 
       </div>
 
 
     )
-  }
+
 }
 
 
-export default Marketside
+

@@ -1,47 +1,115 @@
-import React, { Component } from "react";
+import React, {useState, useEffect} from 'react';
 import '../App.css';
 import * as faIcons from "react-icons/fa";
+import { useParams, useRouteMatch, useHistory  } from 'react-router-dom';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 
 
 
 
-class Markettype extends Component {
+
+export default function Markettype(props) {
+
+  const history = useHistory();
+  const responsiveMobile = useMediaQuery('(max-width: 500px)');
 
 
-  toggle = () => {
-    //console.log(this.props);
-    this.props.toggle();
+  const toggle = () => {
+    
+    if(!responsiveMobile) {
+      props.toggle();
+    }
+
     //console.log(this.props.toggle())
   }
 
 
 
-  render(){
+  const home = () => {
+    history.push({ pathname:`/`});
+    props.setAma(false);
+ }
+
+
+  
+  const ama = () => {
+    history.push({ pathname:`/ama`});
+    props.setAma(true);
+ }
+
+
+
+
+
+
     return(
 
       <div className="App-side-Left">
       <div className="nav-left">
-      <faIcons.FaBars onClick={this.toggle} className="icons-text"/>
+      <faIcons.FaBars onClick={toggle} className="icons-text"/>
       </div>
 
-       <div className={ this.props.empty ? "nav-contain" : "nav-contain-nactive"}>
+       <div className={ props.empty && !responsiveMobile ? "nav-contain" :  "nav-contain-nactive"}>
 
-        <div className="choosechain">
-         <span>ETHEREUM</span>
-         <span>BINANCE</span>
-        </div>
 
 
         <div className="list">
-         <ul className="list-ul">
-         <li>LaunchPads</li>
-         <li>Airdrops</li>
-         <li>KYC</li>
-         <li>Claim Tokens</li>
-         <li>Personal Stats</li>
-         </ul>
+
+          <div className="left-contains" onClick={home} >
+            {
+              props.empty && !responsiveMobile ?
+               <>
+                <faIcons.FaHome  />  
+                <p>Home</p>
+               </>
+              : responsiveMobile && !props.empty ?
+                <faIcons.FaHome  /> 
+              :
+                <faIcons.FaHome  /> 
+            }           
+
+
+          </div>
+
+          <div className="left-contains"  onClick={ama} > 
+
+          {
+              props.empty && !responsiveMobile ?
+               <>
+                <faIcons.FaHive  /> 
+                <p>AmA</p>
+               </>
+              : responsiveMobile && !props.empty ?
+               <faIcons.FaHive  />
+              :
+              <faIcons.FaHive  /> 
+            }           
+
+
+
+          </div>
+
+          <div className="left-contains" > 
+            
+           {
+              props.empty && !responsiveMobile ?
+               <>
+                <faIcons.FaBuffer  /> 
+                <p>About</p>
+               </>
+              : responsiveMobile && !props.empty ?
+               <faIcons.FaBuffer  />
+              :
+               <faIcons.FaBuffer  />
+            }           
+
+
+          </div>
+
         </div>
+
+
 
       </div>
 
@@ -49,8 +117,7 @@ class Markettype extends Component {
 
 
     )
-  }
+  
 }
 
 
-export default Markettype

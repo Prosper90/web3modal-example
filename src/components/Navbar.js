@@ -88,10 +88,6 @@ class Navbar extends Component {
       <div className="App-header">
        <h2 className="text pt-2"> Launchpad  </h2>
 
-       <a href="#pool" className="links pt-3"> Pool </a>
-       <a href="#stake" className="links pt-3"> Staking </a>
-       <a href="#buy" className="links pt-3"> Buy Token </a>
-
       <div className="cont">
        <button className="button-connect" onClick={btnCall}> <faIcons.FaWallet /> </button>
       </div>

@@ -1,128 +1,141 @@
-import React, { Component,  Fragment } from "react";
+import React, {useState, useEffect, Fragment} from 'react';
 import '../App.css';
 import axios from "axios";
+import { useHistory } from 'react-router-dom';
 
 
-class Listedtokens extends Component {
+export default function Listedtokens(props) {
+
+  const [results, setResults] = useState([]);
+  const [next, setNext] = useState(1);
+  const [prev, setPrevious] = useState(0);
+  const [pages, setPages] = useState(2);
+
+  const history = useHistory();
+  
 
 
-  constructor(){
-      super()
-      this.state = {
-        results: [],
-        next : 1,
-        prev : 0,
-        pages: 2
-      }
 
+ 
+
+
+  const getMore = (data) => {
+    history.push({ pathname:`/projects/${data}`});
+    props.setGetmore(true);
+    console.log(data);
+ }
+
+
+
+
+  const changePage = (data) => {
+
+    console.log("bad guy 2");
+
+    if(data === next) {
+      axios.get("https://z3pnrddfl7.execute-api.us-east-1.amazonaws.com/Stage/cryptos?items_per_page=50&page=" +pages+"+&orderby=votes&ordertype=DESC")
+      .then(  (res) => {
+        setResults(res.data.results);
+        setPages(pages + 1);
+      });
+   
+   
+   
+    } else if(data === prev && pages !== 1) {
+   
+      axios.get("https://z3pnrddfl7.execute-api.us-east-1.amazonaws.com/Stage/cryptos?items_per_page=50&page=" +pages+"+&orderby=votes&ordertype=DESC")
+      .then(  (res) => {
+        setResults(res.data.results);
+        setPages(pages - 1);
+      });
+   
+   
+    }
+   
+   
     }
 
-
-  componentDidMount(){
-  axios.get("https://z3pnrddfl7.execute-api.us-east-1.amazonaws.com/Stage/cryptos?items_per_page=50&page=1&orderby=votes&ordertype=DESC")
-  .then(  (res) => {
-    this.setState({ results: res.data.results });
-  });
-
-}
+    
 
 
 
 
+  useEffect(() => {
+  
+    
+    console.log("bad guy 1");
+    axios.get("https://z3pnrddfl7.execute-api.us-east-1.amazonaws.com/Stage/cryptos?items_per_page=50&page=1&orderby=votes&ordertype=DESC")
+    .then(  (res) => {
+      setResults( res.data.results)
+    });
+   
+
+  }, [])
 
 
 
-changePage = (data) => {
-
- if(data === this.state.next) {
-   axios.get("https://z3pnrddfl7.execute-api.us-east-1.amazonaws.com/Stage/cryptos?items_per_page=50&page=" + this.state.pages+"+&orderby=votes&ordertype=DESC")
-   .then(  (res) => {
-     this.setState({ results: res.data.results, pages : this.state.pages + 1 });
-   });
+  
 
 
 
- } else if(data === this.state.prev && this.state.pages !== 1) {
+  return (
+    <>
 
-   axios.get("https://z3pnrddfl7.execute-api.us-east-1.amazonaws.com/Stage/cryptos?items_per_page=50&page=" +this.state.pages+"+&orderby=votes&ordertype=DESC")
-   .then(  (res) => {
-     this.setState({ results: res.data.results, pages : this.state.pages - 1 });
-   });
+            <h2 className='infofix'> Promoted </h2>
+            <div className="container listed-tokens">
+            <div className="contains_toknes-and-votes">
+            <p className="pl-2">Token</p>
+            <p className="pr-2">Votes</p>
+            </div>
 
+          <div className="listed-tokens-hold">
 
- }
+        { results.map((item) => {
 
+          return( 
+          <div onClick={ () => getMore(item.id) } key={item.id} className="w-100" id="created-html" >
 
- }
+                <div id="inside-div">
+                <div id="inside-inside-div" className="creators space-x-3">
+                <div className="-space-x-20 pl-1 avatars">
+                <img className="avatar avatar-sm" alt="logo" src={item.logo_url} />
+                </div>
+                <p className="avatars_name txt_sm pt-2 ">{item.name}</p>
+                </div>
+                <div className="pr-2">
+                <p className="avatars_name txt_sm pt-1">{item.votes}</p>
+                </div>
+                </div>
 
+          </div>)
 
-
-
-
-
-
-  render(){
-
-
-        return (
-          <Fragment>
-
-          <h2> Promoted </h2>
-          <div className="container listed-tokens">
-          <div className="d-flex justify-content-between">
-           <p className="pl-2">Token</p>
-           <p className="pr-2">Votes</p>
-          </div>
-
-        <div className="listed-tokens-hold">
-
-          { this.state.results.map((item) => {
-
-        return( <a href="open-modal" id="created-html" className="w-100" data-toggle="modal" data-target="#popup_bid">
-         <div id="inside-div">
-         <div id="inside-inside-div" className="creators space-x-3">
-         <div className="-space-x-20 pl-1 avatars">
-         <img className="avatar avatar-sm" alt="logo" src={item.logo_url} />
-         </div>
-         <p className="avatars_name txt_sm pt-2 ">{item.name}</p>
-         </div>
-         <div className="pr-2">
-         <p className="avatars_name txt_sm pt-1">{item.votes}</p>
-         </div>
-         </div>
-         </a>)
-
-       }) }
+        }) }
 
 
-       <div aria-label="..." className="pagin">
-        <ul className="pagination">
-         <li className="page-item ">
-         <a className="page-link " onClick={() => this.changePage(this.state.prev)} href="#prev">Previous</a>
-         </li>
+        <div aria-label="..." className="pagin">
+          <ul className="pagination">
+          <li className="page-item ">
+          <a className="page-link " onClick={ () => changePage(prev)}>Previous</a>
+          </li>
 
-         <li className="page-item ">
-         <a className="page-link " onClick={() => this.changePage(this.state.next)} href="#next">Next</a>
-         </li>
-        </ul>
-       </div>
-
-
-         </div>
-
-
-
-
+          <li className="page-item ">
+          <a className="page-link " onClick={ () => changePage(next)} >Next</a>
+          </li>
+          </ul>
+        </div>
 
 
           </div>
 
 
 
-          </Fragment>
-        );
-  }
+
+
+
+            </div>
+
+
+
+    </>
+  )
 }
-
-
-export default Listedtokens;
