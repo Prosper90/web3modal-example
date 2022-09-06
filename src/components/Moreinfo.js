@@ -166,7 +166,7 @@ export default function Moreinfo(props) {
              <div>{ eachToken.twitter === "" ? "NA" : <faIcons.FaTwitter onClick={ () => goto(eachToken.twitter) } /> }</div>
         </div>
 
-        <div className='launched-date'>
+        <div className='launched-date-contract'>
              <div style={{marginRight: "5px"}}>Contract : </div> <div> { !eachToken.contract ? "NA" : eachToken.contract } </div>
         </div>
 

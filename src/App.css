@@ -94,6 +94,7 @@ body{
   scroll-behavior: smooth;
   height: 91vh;
   padding: 28px;
+  gap: 20px;
 }
 
 .App-side-Left {
@@ -777,6 +778,27 @@ font-size: 12px;
 }
 
 
+.ama-vote-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.ama-vote-count {
+  padding-left: 10px;
+}
+
+
+
+
+.launched-date-contract {
+  display: flex;
+  justify-content: flex-start;
+  padding: 13px 0px;
+}
+
+
 
 
 
@@ -886,6 +908,17 @@ font-size: 12px;
 
 
 
+@media screen and (max-width: 676px) {
+
+  .second-contain {
+    flex-direction: column;
+    grid-gap: 10px;
+    gap: 10px;
+}
+
+}
+
+
 
 
 
@@ -899,7 +932,7 @@ font-size: 12px;
     overflow-y: scroll;
     scroll-behavior: smooth;
     height: 91vh;
-    padding: 28px;
+    padding: 5px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -935,6 +968,48 @@ font-size: 12px;
 .infofix {
   font-size: 19px;
 }
+
+
+
+
+.listed-tokens {
+  margin-top: 50px;
+  padding: 5px;
+  background-color: #191320;
+  border-radius: 10px;
+}
+
+
+
+
+
+.listed-tokens .listed-tokens-hold {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  grid-gap: 10px;
+  gap: 10px;
+  height: 40vh;
+  overflow-y: scroll;
+  padding: 5px;
+}
+
+
+
+
+
+.more-container, .more-container-admintwo {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  grid-gap: 20px;
+  gap: 20px;
+  font-size: 12px;
+}
+
+
+
+
 
 
 }

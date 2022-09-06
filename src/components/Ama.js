@@ -121,8 +121,8 @@ export default function Ama(props) {
                       timerSeconds={timerSeconds} 
                       />
 
-                   <div>
-                     <div className='ama-vote' style={{marginRight: "5px", display: "flex"}}> votes : </div> <div>{data.votes} </div>
+                   <div className='ama-vote-container'>
+                     <div className='ama-vote' style={{marginRight: "5px", display: "flex"}}> votes : </div> <div className='ama-vote-count'>{data.votes} </div>
                    </div>
                </div>
 
