@@ -170,7 +170,40 @@ export default function Moreinfo(props) {
              <div style={{marginRight: "5px"}}>Contract : </div> <div> { !eachToken.contract ? "NA" : eachToken.contract } </div>
         </div>
 
+
+        <div className="other-options">
+  
+            <div className="header-welcome-options">
+                -24 hours gains 
+            </div>
+
+            <div className="header-welcome-options">
+              -1 hour gains
+            </div>
+
+            <div className="header-welcome-options">
+              -todays Volume
+            </div>
+
+            <div className="header-welcome-options">
+              -liquidity 
+            </div>
+
+            <div className="header-welcome-options">
+              -Marketcap
+            </div>
+
+
+      </div>
+
+
+
+
      </div>
+
+
+
+
 
         <div className='token-body-section'>
             

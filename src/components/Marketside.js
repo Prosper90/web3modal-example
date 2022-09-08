@@ -31,6 +31,7 @@ export default function Marketside(props) {
 
     { !getMore && !props.ama ?
     <>  
+
         <div className="header-welcome">
 
             <h1> Crypto Tokens LaunchPad </h1>

@@ -5,7 +5,7 @@ body{
 
 
 .App {
-  background-color: #15101b;
+  background-color: rgb(21, 16, 27);
 }
 
 
@@ -27,6 +27,8 @@ body{
  display: flex;
  flex-direction: column;
  justify-content: space-between;
+ background: linear-gradient(135deg, rgb(21, 16, 27, 0.85), rgb(21, 16, 27, 1)),
+             url('./img/launchpadrocket.png') no-repeat center / cover ;
 }
 
 .cont{
@@ -251,7 +253,7 @@ body{
 .listed-tokens {
   margin-top: 50px;
   padding: 30px;
-  background-color: #191320;
+  background-color: rgb(25 19 32 / 75%);
   border-radius: 10px;
 }
 
@@ -324,14 +326,15 @@ body{
   justify-content: center;
 }
 
+
+
 .left-contains :hover {
-  display: flex;
   cursor: pointer;
-  background-color: #191320;
-  border-radius: 8px;
   width: 90%;
-  justify-content: center;
+  background-color: #191320;
+  text-align: center;
 }
+
 
 .left-contains p {
   padding-left: 19px;
@@ -348,6 +351,23 @@ body{
   padding-left: 42px;
   margin-bottom: 50px;
 
+}
+
+
+
+.other-options {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+
+
+.header-welcome-options {
+  border: 1px solid;
+  border-radius: 5px;
+  padding: 5px;
+  margin-bottom: 10px;
+  font-size: 13px;
 }
 
 
@@ -799,6 +819,11 @@ font-size: 12px;
 }
 
 
+
+
+.head-seperate {
+  padding: 0px 35px;
+}
 
 
 

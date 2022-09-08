@@ -97,7 +97,7 @@ const changePage = (data) => {
 
                 <h2 className='infofix' > Listed </h2>
                 <div className="container listed-tokens">
-                <div className="d-flex justify-content-between">
+                <div className="head-seperate">
                   <p className="pl-2">Token</p>
                   <p className="pr-2">Votes</p>
                 </div>
