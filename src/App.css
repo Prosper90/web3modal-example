@@ -96,7 +96,10 @@ body{
   scroll-behavior: smooth;
   height: 91vh;
   padding: 28px;
-  gap: 20px;
+  grid-gap: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 47px;
 }
 
 .App-side-Left {
@@ -357,7 +360,7 @@ body{
 
 .other-options {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
 }
 
 
@@ -383,7 +386,6 @@ body{
 
 
 .more-container {
-  height: 100%;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -815,7 +817,14 @@ font-size: 12px;
 .launched-date-contract {
   display: flex;
   justify-content: flex-start;
-  padding: 13px 0px;
+  padding: 25px 0px;
+}
+
+
+.amamain-contain {
+  margin-right: 5px;
+  display: flex;
+  width: 50%;
 }
 
 
@@ -929,6 +938,18 @@ font-size: 12px;
   }
 
 
+
+
+
+
+
+
+/* working on media responsiveness for mobile 400px below */
+
+
+
+
+
 }
 
 
@@ -956,12 +977,13 @@ font-size: 12px;
     color: #fff;
     overflow-y: scroll;
     scroll-behavior: smooth;
-    height: 91vh;
-    padding: 5px;
+    /* height: 100%; */
+    padding: 15px 9.5px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-}
+  }
+  
 
 
 
@@ -982,28 +1004,6 @@ font-size: 12px;
 .header-welcome .button {
   font-size: 12px;
 }
-
-
-.token-sale {
-  font-size: 23px;
-}
-
-
-
-.infofix {
-  font-size: 19px;
-}
-
-
-
-
-.listed-tokens {
-  margin-top: 50px;
-  padding: 5px;
-  background-color: #191320;
-  border-radius: 10px;
-}
-
 
 
 
@@ -1030,7 +1030,123 @@ font-size: 12px;
   grid-gap: 20px;
   gap: 20px;
   font-size: 12px;
+  overflow-y: scroll;
 }
+
+
+
+
+.contains_toknes-and-votes p {
+  margin: 0;
+}
+
+
+
+
+.header-welcome {
+  border: 1px solid;
+  border-radius: 8px;
+  padding: 10px;
+  /* padding-left: 13px; */
+  margin-bottom: 20px;
+}
+
+
+
+.token-sale {
+  font-size: 20px;
+}
+
+
+
+
+.head-seperate {
+  padding: 10px 35px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+
+
+.head-seperate p {
+  margin: 0px;
+}
+
+
+
+
+.listed-tokens .listed-tokens-hold {
+  margin-top: 0px;
+  display: flex;
+  flex-direction: column;
+  grid-gap: 10px;
+  grid-gap: 10px;
+  gap: 10px;
+  height: 40vh;
+  overflow-y: scroll;
+  padding: 5px;
+}
+
+
+
+
+
+.listed-tokens {
+  margin-top: 10px;
+  padding: 5px;
+  background-color: #191320;
+  border-radius: 10px;
+}
+
+
+
+.contains_toknes-and-votes {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 14px;
+}
+
+
+
+.ourlisted {
+  margin-top: 14px;
+  margin-bottom: 30px;
+}
+
+
+
+
+.infofix {
+  font-size: 19px;
+  margin: 0px;
+}
+
+
+
+
+
+
+.other-options {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* gap: 0px; */
+}
+
+
+
+
+.header-welcome-options {
+  border: 1px solid;
+  border-radius: 5px;
+  padding: 5px;
+  margin-bottom: 10px;
+  font-size: 13px;
+  text-align: center;
+}
+
 
 
 

@@ -19,6 +19,7 @@ export default function Ama(props) {
 
     let interval;
 
+    
     const startTimer = (date) => {
       const countDownDate = new Date(date).getTime();
 
@@ -64,14 +65,15 @@ export default function Ama(props) {
         });
 
 
-
+/*
         if(upcomingAma) {
           upcomingAma.map((data) => {
+            console.log(data.ama);
             startTimer(data.ama);
           })
         }
 
-  
+  */
   
           return history.listen(location => {
               if (history.action === 'POP') {
@@ -80,7 +82,7 @@ export default function Ama(props) {
             })
         
   
-      });
+      }, []);
 
       console.log(upcomingAma);
 
@@ -93,8 +95,10 @@ export default function Ama(props) {
         ?
 
         upcomingAma.map((data) => {
+
+          startTimer(data.ama);
  
-         return(
+         return(  
 
            <div className='ama-cover'>
 

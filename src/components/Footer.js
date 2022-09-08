@@ -20,7 +20,7 @@ class Footer extends Component {
   render(){
     return(
 
-      <div className="footer container-fluid ">
+      <div className="footer">
       <div>
          Crypto Master Copyright © 2022.
       </div>

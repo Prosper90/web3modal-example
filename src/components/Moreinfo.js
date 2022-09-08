@@ -30,8 +30,8 @@ export default function Moreinfo(props) {
     };
 
 
-    console.log(token);
-    console.log(typeof(token))
+    //console.log(token);
+    //console.log(typeof(token))
 
 
 
@@ -137,10 +137,29 @@ export default function Moreinfo(props) {
    }
 
 
+
+
+
+   const getamaDate = (ama) => {
+      
+      const dateama = new Date( ama );
+
+      const timeString = dateama.toUTCString().split(" ")[4]; //This will return your 17:50:00
+      //For the date string part of it
+      const dateNumber = dateama.getDate();
+      const monthNumber = dateama.getMonth() + 1;
+      const yearNumber = dateama.getFullYear();
+      const dateString = `${dateNumber}/${monthNumber}/${yearNumber}`;
+      const finalDateString = [dateString, timeString].join(" ");
+      console.log(finalDateString);
+      return finalDateString;
+   }
+
+
     
 
 
-    console.log(eachToken);
+    //console.log(eachToken);
 
 
 
@@ -223,7 +242,7 @@ export default function Moreinfo(props) {
                 </div>
 
                 <div className='launched-date'>
-                  <div style={{marginRight: "5px"}}> AMA : </div> <div> { !eachToken.ama ? "None" : eachToken.ama } </div>
+                  <div className='amamain-contain'> AMA : </div> <div> { !eachToken.ama ? "None" :  getamaDate(eachToken.ama) } </div>
                 </div>
              </div>
 
