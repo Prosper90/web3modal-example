@@ -5,6 +5,7 @@ import Ourlisted from "./Ourlisted";
 import Footer from "./Footer";
 import Moreinfo from "./Moreinfo";
 import Ama from "./Ama";
+import About from "./About";
 
 //import axios from "axios";
 
@@ -29,7 +30,7 @@ export default function Marketside(props) {
 
   <div className="App-side-Right">
 
-    { !getMore && !props.ama ?
+    { !getMore && !props.ama && !props.about ?
     <>  
 
         <div className="header-welcome">
@@ -55,18 +56,18 @@ export default function Marketside(props) {
 
       </>
 
-       : getMore && !props.ama ?
+       : getMore && !props.ama && !props.about ?
 
         <Moreinfo setGetmore={setGetmore} getMore={getMore} />
 
-       : !getMore && props.ama ?
+       : !getMore && props.ama && !props.about ?
          
          <Ama ama={props.ama} setAma={props.setAma} />
 
-         :
+        : !getMore && !props.ama && props.about  &&
 
-         <div></div>
-       
+         <About />
+
       }
      
 

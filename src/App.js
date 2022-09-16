@@ -31,6 +31,7 @@ export default function App(props) {
 
     const [toggle, setToggle] = useState(true);
     const [ama, setAma] = useState(false);
+    const [about, setAbout] = useState(false);
     const responsiveMobile = useMediaQuery('(max-width: 500px)');
 
   
@@ -55,19 +56,23 @@ export default function App(props) {
 
 
               <Route path="/">
-                  <Layout toggle={toggle} togglebtn={togglebtn} ama={ama} setAma={setAma} />
+                  <Layout toggle={toggle} togglebtn={togglebtn} ama={ama} setAma={setAma} setAbout={setAbout} about={about} />
               </Route>
 
               <Route path="/projects/:token">
-                  <Layout toggle={toggle} togglebtn={togglebtn} ama={ama} setAma={setAma} />
+                  <Layout toggle={toggle} togglebtn={togglebtn} ama={ama} setAma={setAma} setAbout={setAbout} about={about} />
               </Route>
 
               <Route path="/listedprojects/:token">
-                  <Layout toggle={toggle} togglebtn={togglebtn} ama={ama} setAma={setAma} />
+                  <Layout toggle={toggle} togglebtn={togglebtn} ama={ama} setAma={setAma} setAbout={setAbout} about={about} />
               </Route>
 
               <Route path="/ama">
-                  <Layout toggle={toggle} togglebtn={togglebtn} ama={ama} setAma={setAma} />
+                  <Layout toggle={toggle} togglebtn={togglebtn} ama={ama} setAma={setAma} setAbout={setAbout} about={about} />
+              </Route>
+
+              <Route path="/about">
+                  <Layout toggle={toggle} togglebtn={togglebtn} ama={ama} setAma={setAma} setAbout={setAbout} about={about} />
               </Route>
 
 

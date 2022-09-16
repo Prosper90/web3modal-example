@@ -29,6 +29,7 @@ export default function Markettype(props) {
   const home = () => {
     history.push({ pathname:`/`});
     props.setAma(false);
+    props.setAbout(false);
  }
 
 
@@ -36,7 +37,21 @@ export default function Markettype(props) {
   const ama = () => {
     history.push({ pathname:`/ama`});
     props.setAma(true);
+    props.setAbout(false);
  }
+
+
+
+ const about = () => {
+   console.log('logged');
+  history.push({ pathname:`/about`});
+  props.setAma(false);
+  props.setAbout(true);
+}
+
+
+
+
 
 
 
@@ -90,13 +105,13 @@ export default function Markettype(props) {
 
           </div>
 
-          <div className="left-contains" > 
+          <div className="left-contains" onClick={about}> 
             
            {
               props.empty && !responsiveMobile ?
                <>
                 <faIcons.FaBuffer  /> 
-                <p>About</p>
+                <p>Buy</p>
                </>
               : responsiveMobile && !props.empty ?
                <faIcons.FaBuffer  />

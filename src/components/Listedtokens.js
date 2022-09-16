@@ -79,18 +79,23 @@ export default function Listedtokens(props) {
 
 
   return (
-    <>
+    <div className='ourlisted'>
 
             <h2 className='infofix'> Promoted </h2>
-            <div className="container listed-tokens">
+            <div className="listed-tokens">
             <div className="contains_toknes-and-votes">
             <p className="pl-2">Token</p>
             <p className="pr-2">Votes</p>
             </div>
 
-          <div className="listed-tokens-hold">
+      <div className="listed-tokens-hold">
 
-        { results.map((item) => {
+      { results.length === 0 
+         ?
+           <div>Loading ...</div>
+         :
+
+         results.map((item) => {
 
           return( 
           <div onClick={ () => getMore(item.id) } key={item.id} className="w-100" id="created-html" >
@@ -109,7 +114,9 @@ export default function Listedtokens(props) {
 
           </div>)
 
-        }) }
+        }) 
+
+        }
 
 
         <div aria-label="..." className="pagin">
@@ -136,6 +143,6 @@ export default function Listedtokens(props) {
 
 
 
-    </>
+    </div>
   )
 }

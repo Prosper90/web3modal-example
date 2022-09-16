@@ -16,8 +16,8 @@ export default function Layout(props) {
 
             <div className={ props.toggle && !responsiveMobile ? "hold-contain" : !props.toggle && !responsiveMobile ?  "hold-contain-nactive" : "hold-contain-nactive-mobile" } >
 
-                <Markettype toggle={props.togglebtn} empty={props.toggle} ama={props.ama} setAma={props.setAma} />
-                <Marketside gridchange={props.toggle} ama={props.ama} setAma={props.setAma} />
+                <Markettype toggle={props.togglebtn} empty={props.toggle} ama={props.ama} setAma={props.setAma} about={props.about} setAbout={props.setAbout} />
+                <Marketside gridchange={props.toggle} ama={props.ama} setAma={props.setAma} about={props.about} setAbout={props.setAbout} />
                 
 
             </div>

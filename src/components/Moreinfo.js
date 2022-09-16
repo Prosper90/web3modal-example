@@ -4,6 +4,7 @@ import axios from "axios";
 import { useParams, useRouteMatch, useHistory  } from 'react-router-dom';
 import * as faIcons from "react-icons/fa";
 import parse from 'html-react-parser';
+import Toast from 'react-bootstrap/Toast';
 
 
 
@@ -11,11 +12,15 @@ import parse from 'html-react-parser';
 export default function Moreinfo(props) {
   
     const [eachToken, setEachToken] = useState({});
+    const [showA, setShowA] = useState(false);
     const history = useHistory();
     let params = useParams();
     
-    console.log(params);
+    //console.log(params);
 
+
+    
+    const toggleShowA = () => setShowA(!showA);
 
     const match = useRouteMatch('/projects/:token');
     const { token } = {
@@ -40,7 +45,7 @@ export default function Moreinfo(props) {
     const voteToken = async (data) => {
       //make a call to the database and save the new token
       //save the amount transfered to the database
-      const vote = await fetch(`http://localhost:8000/projects/vote`, 
+      const vote = await fetch(`https://web3-launchpad.herokuapp.com/vote`, 
       {
       method: 'POST',   
       headers: {
@@ -54,6 +59,10 @@ export default function Moreinfo(props) {
       );
       const checkvote = await vote.json();
       console.log(checkvote);
+
+      if(checkvote) {
+        setShowA(true);
+      }
 }
 
 
@@ -166,6 +175,23 @@ export default function Moreinfo(props) {
   return (
     <div className='more-container'>
 
+    {showA && 
+
+        <Toast className='toast' show={showA} onClose={toggleShowA} bg='success' >
+            <Toast.Header>
+              <img
+                src="holder.js/20x20?text=%20"
+                className="rounded me-2"
+                alt=""
+              />
+              <strong className="me-auto">Voted</strong>
+            </Toast.Header>
+            <Toast.Body>Vote successfully added!</Toast.Body>
+        </Toast>
+    
+    }
+
+
         <div className='header-logo'>
             <div className='token-logo'>
                <img src={eachToken.logo_url} alt="token-image"  />
@@ -189,31 +215,30 @@ export default function Moreinfo(props) {
              <div style={{marginRight: "5px"}}>Contract : </div> <div> { !eachToken.contract ? "NA" : eachToken.contract } </div>
         </div>
 
+       {listedtoken &&
+          <div className="other-options">
+            
+              <div className="header-welcome-options">
+                  -24 hours gains 
+              </div>
 
-        <div className="other-options">
-  
-            <div className="header-welcome-options">
-                -24 hours gains 
-            </div>
+              <div className="header-welcome-options">
+                -todays Volume
+              </div>
 
-            <div className="header-welcome-options">
-              -1 hour gains
-            </div>
+              <div className="header-welcome-options">
+                -liquidity 
+              </div>
 
-            <div className="header-welcome-options">
-              -todays Volume
-            </div>
-
-            <div className="header-welcome-options">
-              -liquidity 
-            </div>
-
-            <div className="header-welcome-options">
-              -Marketcap
-            </div>
+              <div className="header-welcome-options">
+                -Marketcap
+              </div>
 
 
-      </div>
+          </div>
+
+      }
+
 
 
 

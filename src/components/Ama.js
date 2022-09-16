@@ -11,46 +11,38 @@ export default function Ama(props) {
     const history = useHistory();
     const [upcomingAma, setupcomingAma] = useState([]);
 
-    const [timerDays, setTimerDays] = useState();
-    const [timerHours, setTimerHours] = useState();
-    const [timerMinutes, setTimerMinutes] = useState();
-    const [timerSeconds, setTimerSeconds] = useState();
 
 
-    let interval;
-
-    
-    const startTimer = (date) => {
-      const countDownDate = new Date(date).getTime();
-
-      interval = setInterval(() => {
-        const now = new Date().getTime();
-
-        const distance = countDownDate - now;
 
 
-        const days = Math.floor(distance/(24*60*60*1000));
-        const hours = Math.floor(distance % (24*60*60*1000)/(1000*60*60));
-        const minutes = Math.floor(distance % (60*60*1000)/(1000*60));
-        const seconds = Math.floor(distance % (60*1000)/(1000));
+
+  const checkNearest = (date) => {
+
+    const countDownDate = new Date(date).getTime();
+
+      const now = new Date().getTime();
+
+      const distance = countDownDate - now;
 
 
-        if(distance < 0 ) {
-          //clear timer
-          //show message
+      const days = Math.floor(distance/(24*60*60*1000));
+      const hours = Math.floor(distance % (24*60*60*1000)/(1000*60*60));
+      const minutes = Math.floor(distance % (60*60*1000)/(1000*60));
+      const seconds = Math.floor(distance % (60*1000)/(1000));
 
-          clearInterval(interval.current);
-        } else {
-          //update timer
-          setTimerDays(days);
-          setTimerHours(hours);
-          setTimerMinutes(minutes);
-          setTimerSeconds(seconds);
+      if(days === 0) {
+        return 1;
+      } else if( days === 0 && hours === 0) {
+        return 2;
+      } else if(days === 0 && hours === 0 && minutes === 0) {
+        return 3
+      }
 
-        }
+  }
 
-      })
-    }
+
+
+
 
 
 
@@ -60,7 +52,7 @@ export default function Ama(props) {
         //console.log("Running");
         axios.get("https://web3-launchpad.herokuapp.com/ama")
         .then(  (res) => {
-            console.log(res.data);
+            //console.log(res.data);
             setupcomingAma(res.data);
         });
 
@@ -84,7 +76,7 @@ export default function Ama(props) {
   
       }, []);
 
-      console.log(upcomingAma);
+      //console.log(upcomingAma);
 
 
 
@@ -96,11 +88,12 @@ export default function Ama(props) {
 
         upcomingAma.map((data) => {
 
-          startTimer(data.ama);
+          //const getstarted = startTimer(data.ama);
+          //console.log(getstarted);
  
          return(  
 
-           <div className='ama-cover'>
+           <div className={ checkNearest(data.ama) === 1 ? 'ama-cover-1' : checkNearest(data.ama) === 2 ? 'ama-cover-2' : checkNearest(data.ama) === 3 ? 'ama-cover-3'  : 'ama-cover' }>
 
                 <div className='first-contain'>
 
@@ -119,10 +112,7 @@ export default function Ama(props) {
                 <div className='second-contain'>
 
                    <Clock 
-                      timerDays={timerDays} 
-                      timerHours={timerHours} 
-                      timerMinutes={timerMinutes} 
-                      timerSeconds={timerSeconds} 
+                        amadate={data.ama}
                       />
 
                    <div className='ama-vote-container'>
